@@ -1,12 +1,16 @@
 # sbt-ecr
 
-An [SBT](http://www.scala-sbt.org/) plugin for managing [Docker](http://docker.io) images within [Amazon ECR](https://aws.amazon.com/ecr/).
+An [SBT](http://www.scala-sbt.org/) plugin for managing [Docker](http://docker.io) images within [Amazon ECR](https://aws.amazon.com/ecr/) in an immutable way.
 
-[ ![Download](https://api.bintray.com/packages/sbilinski/sbt-plugins/sbt-ecr/images/download.svg) ](https://bintray.com/sbilinski/sbt-plugins/sbt-ecr/_latestVersion)
+[![Build Status](https://travis-ci.org/Colisweb/sbt-immutable-ecr.svg?branch=master)](https://travis-ci.org/Colisweb/sbt-immutable-ecr)
+
+This project is a fork of [sbt-ecr](https://github.com/sbilinski/sbt-ecr) aiming to enforce immutability in the Docker tags management.
+
+We want to thanks all the initial contrinutors of `sbt-ecr` for their work.
 
 ## Features
 
-Enable the use of the [sbt-native-packager DockerPlugin](https://www.scala-sbt.org/sbt-native-packager/formats/docker.html) with [Amazon ECR](https://aws.amazon.com/ecr/).
+Enable the use of the [sbt-native-packager DockerPlugin](https://www.scala-sbt.org/sbt-native-packager/formats/docker.html) with [Amazon ECR](https://aws.amazon.com/ecr/) in an immutable way.
 
 Prerequisites
 -------------
@@ -19,16 +23,20 @@ another plugin that includes and initializes it (e.g. the SBT plugin for Play 2.
 
 Add the following to your `project/plugins.sbt` file:
 
-    addSbtPlugin("com.mintbeans" % "sbt-ecr" % "0.11.0")
+```scala
+addSbtPlugin("com.colisweb.sbt" % "sbt-immutable-ecr" % "0.1.0")
+```
 
-Add `sbt-ecr` settings to your `build.sbt`:   
+Add `sbt-immutable-ecr` settings to your `build.sbt`:   
 
-    import com.amazonaws.regions.Regions
-    
-    enablePlugins(EcrPlugin)
+```scala
+import com.amazonaws.regions.Regions
 
-    Ecr / region := Regions.US_EAST_1
-    
+enablePlugins(ImmutableEcrPlugin)
+
+ImmutableEcr / region := Regions.US_EAST_1
+```
+
 That's all ! :tada:
 
 :warning: This plugins will set the `Docker / dockerRepository` value for you, so you **SHOULD NOT** set it in your `build.sbt`.

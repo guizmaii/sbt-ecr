@@ -1,9 +1,9 @@
-package sbtecr
+package com.colisweb.sbt.immutable.ecr
 
 import com.amazonaws.auth._
 import com.amazonaws.auth.profile.ProfileCredentialsProvider
 
-private[sbtecr] object Aws {
+private[ecr] object Aws {
 
   val credentialsProvider: AWSCredentialsProvider =
     new AWSCredentialsProviderChain(

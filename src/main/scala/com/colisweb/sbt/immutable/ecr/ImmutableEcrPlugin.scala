@@ -1,4 +1,4 @@
-package sbtecr
+package com.colisweb.sbt.immutable.ecr
 
 import com.amazonaws.regions.{Region, Regions}
 import com.typesafe.sbt.packager.docker.DockerPlugin
@@ -9,10 +9,10 @@ import sbt.{Def, _}
 import scala.language.postfixOps
 import scala.sys.process._
 
-object EcrPlugin extends AutoPlugin {
+object ImmutableEcrPlugin extends AutoPlugin {
 
   object autoImport {
-    lazy val Ecr = config("ecr")
+    lazy val ImmutableEcr = config("ecr")
 
     lazy val region = settingKey[Regions]("Amazon EC2 region.")
   }
@@ -52,6 +52,6 @@ object EcrPlugin extends AutoPlugin {
     }
   }
 
-  private lazy val getRegion: Def.Initialize[Region] = Def.setting { Region.getRegion((Ecr / region).value) }
+  private lazy val getRegion: Def.Initialize[Region] = Def.setting { Region.getRegion((ImmutableEcr / region).value) }
 
 }

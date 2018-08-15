@@ -1,10 +1,10 @@
-package sbtecr
+package com.colisweb.sbt.immutable.ecr
 
 import com.amazonaws.regions.Region
 import com.amazonaws.services.securitytoken.AWSSecurityTokenServiceClientBuilder
 import com.amazonaws.services.securitytoken.model.GetCallerIdentityRequest
 
-private[sbtecr] object AwsSts {
+private[ecr] object AwsSts {
 
   import Aws._
 

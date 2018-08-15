@@ -1,4 +1,4 @@
-package sbtecr
+package com.colisweb.sbt.immutable.ecr
 
 import java.util.Base64
 
@@ -9,7 +9,7 @@ import sbt.Logger
 
 import scala.collection.JavaConverters._
 
-private[sbtecr] object AwsEcr {
+private[ecr] object AwsEcr {
 
   import Aws._
 
