@@ -1,0 +1,8 @@
+sudo: false
+language: scala
+script:
+- sbt "++${TRAVIS_SCALA_VERSION}" test scripted
+matrix:
+  include:
+  - jdk: oraclejdk8
+    scala: 2.12.6
